@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

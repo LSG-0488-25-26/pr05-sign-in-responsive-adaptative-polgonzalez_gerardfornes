@@ -1,4 +1,7 @@
 package com.example.loginregister
 
-class Routes {
+sealed class Routes(val route: String) {
+    object HomeScreen : Routes("home")
+    object LoginLayout : Routes("login")
+
 }

@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+
 package com.example.loginregister
 
 import android.os.Bundle
@@ -8,10 +10,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.loginregister.ui.theme.LoginRegisterTheme
+import com.example.loginregister.views.LoginLayout
+import com.example.loginregister.views.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +28,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LoginRegisterTheme {
+                val windowSize = calculateWindowSizeClass(this)
+                val navigationController = rememberNavController ()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    NavHost (
+                        navController = navigationController ,
+                        startDestination = Routes.LoginLayout.route,
                         modifier = Modifier.padding(innerPadding)
-                    )
+                    ) {
+                        composable(Routes.LoginLayout.route) { LoginLayout(modifier = Modifier, navController = navigationController) }
+                        composable(Routes.HomeScreen.route) { HomeScreen(modifier = Modifier, navController = navigationController, windowSizeClass = windowSize) }
+                    }
                 }
             }
         }

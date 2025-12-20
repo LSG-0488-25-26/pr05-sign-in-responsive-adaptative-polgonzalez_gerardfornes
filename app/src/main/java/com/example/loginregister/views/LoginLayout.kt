@@ -21,10 +21,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.loginregister.R
 
 @Composable
-fun LoginLayout(modifier: Modifier) {
+fun LoginLayout(modifier: Modifier, navController: NavController) {
     Box(modifier = Modifier.fillMaxSize().background(Color.Black))
 
     Column (modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){

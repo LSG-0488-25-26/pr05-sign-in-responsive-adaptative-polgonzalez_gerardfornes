@@ -17,3 +17,7 @@ val StopifyGreen = Color(0xFF1DB954)
 val StopifyWhite = Color.White
 
 val StopifyGrey = Color(0xFFB3B3B3)
+
+val SpotifyDarkGrey = Color(0xFF212121)
+
+val SpotifyTextGrey = Color(0xFFB3B3B3)

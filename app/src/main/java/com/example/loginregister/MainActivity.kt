@@ -15,8 +15,15 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.loginregister.ui.theme.LoginRegisterTheme
+import com.example.loginregister.viewmodel.StopifyViewModel
+import com.example.loginregister.views.LoginLayout
 import com.example.loginregister.views.HomeScreen
+import com.example.loginregister.views.RegistreScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,10 +32,35 @@ class MainActivity : ComponentActivity() {
         setContent {
             LoginRegisterTheme {
                 val windowSize = calculateWindowSizeClass(this)
+                val navigationController = rememberNavController()
+
+                val stopifyViewModel: StopifyViewModel = viewModel()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
-                        windowSizeClass = windowSize,
-                        modifier = Modifier.padding(innerPadding))
+                    NavHost(
+                        navController = navigationController,
+                        startDestination = Routes.LoginLayout.route,
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
+                        composable(Routes.LoginLayout.route) {
+                            LoginLayout(
+                                modifier = Modifier,
+                                navController = navigationController, windowSize = windowSize, viewModel = stopifyViewModel)
+                        }
+                        composable(Routes.RegistreScreen.route) {
+                            RegistreScreen(
+                                navController = navigationController,
+                                windowSize = windowSize,
+                                viewModel = stopifyViewModel
+                            )
+                        }
+                        composable(Routes.HomeScreen.route) {
+                            HomeScreen(
+                                navController = navigationController,
+                                windowSizeClass = windowSize
+                            )
+                        }
+                    }
                 }
             }
         }

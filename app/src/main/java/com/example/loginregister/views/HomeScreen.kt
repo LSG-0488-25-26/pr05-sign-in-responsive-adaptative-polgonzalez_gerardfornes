@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.loginregister.R
 import com.example.loginregister.ui.theme.*
 import com.example.loginregister.viewmodel.StopifyViewModel
@@ -30,7 +31,8 @@ import com.example.loginregister.viewmodel.StopifyViewModel
 fun HomeScreen(
     modifier: Modifier = Modifier,
     stopifyViewModel: StopifyViewModel = viewModel(),
-    windowSizeClass: WindowSizeClass
+    windowSizeClass: WindowSizeClass,
+    navController: NavController
 ) {
     val userState by stopifyViewModel.currentUser.observeAsState()
     val displayUsername = userState?.username ?: "Convidat"
@@ -139,7 +141,7 @@ fun HomeTextAndButtons(username: String) {
     ) {
         Text(
             text = "COMENÇAR A PARAR MÚSICA!",
-            fontSize = 16.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             letterSpacing = 1.sp
         )

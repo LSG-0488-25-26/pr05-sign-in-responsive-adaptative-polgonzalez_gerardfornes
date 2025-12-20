@@ -1,0 +1,90 @@
+Index: app/src/main/java/com/example/loginregister/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.loginregister\r\n\r\nimport android.os.Bundle\r\nimport androidx.activity.ComponentActivity\r\nimport androidx.activity.compose.setContent\r\nimport androidx.activity.enableEdgeToEdge\r\nimport androidx.compose.foundation.layout.fillMaxSize\r\nimport androidx.compose.foundation.layout.padding\r\nimport androidx.compose.material3.Scaffold\r\nimport androidx.compose.material3.Text\r\nimport androidx.compose.runtime.Composable\r\nimport androidx.compose.ui.Modifier\r\nimport androidx.compose.ui.tooling.preview.Preview\r\nimport com.example.loginregister.ui.theme.LoginRegisterTheme\r\n\r\nclass MainActivity : ComponentActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        enableEdgeToEdge()\r\n        setContent {\r\n            LoginRegisterTheme {\r\n                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->\r\n                    Greeting(\r\n                        name = \"Android\",\r\n                        modifier = Modifier.padding(innerPadding)\r\n                    )\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n@Composable\r\nfun Greeting(name: String, modifier: Modifier = Modifier) {\r\n    Text(\r\n        text = \"Hello $name!\",\r\n        modifier = modifier\r\n    )\r\n}\r\n\r\n@Preview(showBackground = true)\r\n@Composable\r\nfun GreetingPreview() {\r\n    LoginRegisterTheme {\r\n        Greeting(\"Android\")\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/loginregister/MainActivity.kt b/app/src/main/java/com/example/loginregister/MainActivity.kt
+--- a/app/src/main/java/com/example/loginregister/MainActivity.kt	(revision f299a362378d4529261f733896c32e7c4bcbdebb)
++++ b/app/src/main/java/com/example/loginregister/MainActivity.kt	(date 1766228690900)
+@@ -12,6 +12,7 @@
+ import androidx.compose.ui.Modifier
+ import androidx.compose.ui.tooling.preview.Preview
+ import com.example.loginregister.ui.theme.LoginRegisterTheme
++import com.example.loginregister.views.LoginLayout
+ 
+ class MainActivity : ComponentActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+@@ -20,8 +21,7 @@
+         setContent {
+             LoginRegisterTheme {
+                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+-                    Greeting(
+-                        name = "Android",
++                    LoginLayout(
+                         modifier = Modifier.padding(innerPadding)
+                     )
+                 }
+Index: app/src/main/java/com/example/loginregister/views/LoginLayout.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/loginregister/views/LoginLayout.kt b/app/src/main/java/com/example/loginregister/views/LoginLayout.kt
+new file mode 100644
+--- /dev/null	(date 1766228690942)
++++ b/app/src/main/java/com/example/loginregister/views/LoginLayout.kt	(date 1766228690942)
+@@ -0,0 +1,25 @@
++package com.example.loginregister.views
++
++import androidx.compose.foundation.Image
++import androidx.compose.foundation.background
++import androidx.compose.foundation.layout.Box
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.fillMaxWidth
++import androidx.compose.foundation.layout.size
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.graphics.Color
++import androidx.compose.ui.res.painterResource
++import androidx.compose.ui.unit.dp
++import com.example.loginregister.R
++
++@Composable
++fun LoginLayout(modifier: Modifier) {
++    Box(modifier = Modifier.fillMaxSize().background(Color.Black))
++
++    Column (modifier = Modifier.fillMaxWidth(), Alignment = Alignment.Center){
++        Image(painter = painterResource(id = R.drawable.logo_solo_stopify), contentDescription = "LogoStopify", Modifier.size(200.dp))
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/loginregister/ui/theme/Color.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.loginregister.ui.theme\r\n\r\nimport androidx.compose.ui.graphics.Color\r\n\r\nval Purple80 = Color(0xFFD0BCFF)\r\nval PurpleGrey80 = Color(0xFFCCC2DC)\r\nval Pink80 = Color(0xFFEFB8C8)\r\n\r\nval Purple40 = Color(0xFF6650a4)\r\nval PurpleGrey40 = Color(0xFF625b71)\r\nval Pink40 = Color(0xFF7D5260)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/loginregister/ui/theme/Color.kt b/app/src/main/java/com/example/loginregister/ui/theme/Color.kt
+--- a/app/src/main/java/com/example/loginregister/ui/theme/Color.kt	(revision f299a362378d4529261f733896c32e7c4bcbdebb)
++++ b/app/src/main/java/com/example/loginregister/ui/theme/Color.kt	(date 1766228690917)
+@@ -8,4 +8,12 @@
+ 
+ val Purple40 = Color(0xFF6650a4)
+ val PurpleGrey40 = Color(0xFF625b71)
+-val Pink40 = Color(0xFF7D5260)
+\ No newline at end of file
++val Pink40 = Color(0xFF7D5260)
++
++val StopifyBlack = Color(0xFF191414)
++
++val StopifyGreen = Color(0xFF1DB954)
++
++val StopifyWhite = Color.White
++
++val StopifyGrey = Color(0xFFB3B3B3)
+\ No newline at end of file

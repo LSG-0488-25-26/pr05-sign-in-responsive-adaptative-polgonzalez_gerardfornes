@@ -23,6 +23,7 @@ import com.example.loginregister.ui.theme.LoginRegisterTheme
 import com.example.loginregister.viewmodel.StopifyViewModel
 import com.example.loginregister.views.LoginLayout
 import com.example.loginregister.views.HomeScreen
+import com.example.loginregister.views.RegistreScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +46,13 @@ class MainActivity : ComponentActivity() {
                             LoginLayout(
                                 modifier = Modifier,
                                 navController = navigationController, windowSize = windowSize, viewModel = stopifyViewModel)
+                        }
+                        composable(Routes.RegistreScreen.route) {
+                            RegistreScreen(
+                                navController = navigationController,
+                                windowSize = windowSize,
+                                viewModel = stopifyViewModel
+                            )
                         }
                         composable(Routes.HomeScreen.route) {
                             HomeScreen(

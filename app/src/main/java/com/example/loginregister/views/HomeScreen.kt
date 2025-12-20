@@ -141,7 +141,7 @@ fun HomeTextAndButtons(username: String) {
     ) {
         Text(
             text = "COMENÇAR A PARAR MÚSICA!",
-            fontSize = 16.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             letterSpacing = 1.sp
         )

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loginregister.R
+import com.example.loginregister.Routes
 import com.example.loginregister.ui.theme.*
 import com.example.loginregister.viewmodel.StopifyViewModel
 
@@ -53,12 +54,11 @@ fun LoginLayout(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.logo_solo_stopify),
+                        painter = painterResource(id = R.drawable.logo_stopify),
                         contentDescription = "LogoStopify",
-                        modifier = Modifier.size(80.dp),
+                        modifier = Modifier.size(240.dp),
                         contentScale = ContentScale.Fit
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
                         text = "¡Hola de nou!",
                         color = Color.White,
@@ -81,15 +81,9 @@ fun LoginLayout(
                     ) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Image(
-                                painter = painterResource(id = R.drawable.logo_solo_stopify),
+                                painter = painterResource(id = R.drawable.logo_stopify),
                                 contentDescription = "LogoStopify",
                                 modifier = Modifier.size(150.dp)
-                            )
-                            Text(
-                                text = "Stopify",
-                                color = StopifyWhite,
-                                fontSize = 40.sp,
-                                fontWeight = FontWeight.Bold
                             )
                         }
                     }
@@ -159,7 +153,7 @@ fun LoginForm(viewModel: StopifyViewModel, navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        TextButton(onClick = { /* Navegar a registro */ }) {
+        TextButton(onClick = { navController.navigate(Routes.RegistreScreen.route) }) {
             Text(text = "No tens una compte? Registre't", color = SpotifyTextGrey)
         }
     }
